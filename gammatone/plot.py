@@ -8,7 +8,7 @@ Plotting utilities related to gammatone analysis, primarily for use with
 """
 from __future__ import division
 import argparse
-import os.path
+from pathlib import Path
 
 import matplotlib.pyplot
 import matplotlib.ticker
@@ -133,8 +133,10 @@ def render_audio_from_file(path, duration, function, landuse_class):
         signal,
         samplerate,
         twin, thop, channels, fmin)
-
-    matplotlib.pyplot.savefig("image_datasets/" + landuse_class + "/8638.png")
+    
+    basename = Path(path).stem
+    
+    matplotlib.pyplot.savefig("image_datasets/" + landuse_class +  "/" + basename + ".png")
     #axes.set_title(os.path.basename(path))
     #axes.set_xlabel("Time (s)")
     #axes.set_ylabel("Frequency")
